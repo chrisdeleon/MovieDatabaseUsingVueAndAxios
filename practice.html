@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+
+<div id="app">
+{{ message }}
+<input v-model = "message">
+<button v-on:click = "changeTitle">Change the message</button>
+<ul>
+    <li v-for = "todo in todos">{{todo.list}}</li>
+</ul>
+<button v-on:click="increment">Increment</button><button v-on:click="decrement">Decrement</button>
+<p>Clicks: {{ clicks }}</p>
+<p>Clicks5: {{ clicks5 }}</p>
+<p>Computed: {{ clicks10 }}</p>
+</div>
+
+
+<script>
+    var app = new Vue({
+        el : "#app",
+        data : {
+            clicks : 0,
+            clicks5 : 0,
+            message : "Hello Vue",
+            todos: [
+                {list : "learn HTML"},
+                {list : "learn javascript"},
+                {list: "learn vue.js"}
+
+            ]
+        }, 
+        methods : {
+            changeTitle(){
+                this.message='new message from method';
+            },
+            increment(){
+                this.clicks++;
+                this.clicks5 = this.clicks + 5;
+            },
+            decrement(){
+                this.clicks--;
+            }
+        },
+        computed: {
+            clicks10 (){
+                return this.clicks + 10;
+            }
+        }
+    })
+</script>
